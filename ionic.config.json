@@ -1,0 +1,7 @@
+{
+  "name": "Ej2_Tema3_JesusCondeBarba",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
