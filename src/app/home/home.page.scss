@@ -25,3 +25,29 @@
 #container a {
   text-decoration: none;
 }
+
+.home-controls {
+  /* separa el bloque fijo del borde superior y del header */
+  margin-top: 8px;
+  width: calc(100% - 32px);
+  left: 16px;
+  right: 16px;
+}
+
+.controls-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.milestone {
+  font-weight: 600;
+}
+
+
+
+
+
+
+

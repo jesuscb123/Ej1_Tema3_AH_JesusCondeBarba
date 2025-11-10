@@ -1,0 +1,46 @@
+<div class="ion-padding">
+  <form [formGroup]="clienteForm" novalidate>
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input formControlName="nombre" type="text" placeholder="Tu nombre"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="f.nombre.touched && f.nombre.invalid">
+        El nombre es obligatorio.
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input formControlName="apellido" type="text" placeholder="Tu apellido"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="f.apellido.touched && f.apellido.invalid">
+        El apellido es obligatorio.
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input formControlName="email" type="email" placeholder="tu@email.com"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="f.email.touched && f.email.errors?.['required']">
+        El email es obligatorio.
+      </ion-note>
+      <ion-note color="danger" *ngIf="f.email.touched && f.email.errors?.['email']">
+        El formato del email no es válido.
+      </ion-note>
+
+      <ion-item>
+        <ion-label position="stacked">Nacionalidad</ion-label>
+        <ion-input formControlName="nacionalidad" type="text" placeholder="Ej. Española"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="f.nacionalidad.touched && f.nacionalidad.invalid">
+        La nacionalidad es obligatoria.
+      </ion-note>
+
+    </ion-list>
+
+    <ion-button expand="block" (click)="guardar()" [disabled]="clienteForm.invalid">
+      Guardar
+    </ion-button>
+  </form>
+</div>

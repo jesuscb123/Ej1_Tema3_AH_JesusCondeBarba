@@ -1,0 +1,23 @@
+<div class="ion-padding">
+  <ng-container *ngIf="cliente; else sinDatos">
+    <ion-list>
+      <ion-item>
+        <ion-label><strong>Nombre:</strong> {{ cliente?.nombre }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Apellido:</strong> {{ cliente?.apellido }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Email:</strong> {{ cliente?.email }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label><strong>Nacionalidad:</strong> {{ cliente?.nacionalidad }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ng-template #sinDatos>
+    <p>No hay datos de cliente. Ve a <a routerLink="/list/cliente">Cliente</a> para rellenar el formulario.</p>
+    <ion-button routerLink="/list/cliente">Ir a Cliente</ion-button>
+  </ng-template>
+</div>

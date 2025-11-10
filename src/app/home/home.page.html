@@ -1,20 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cádiz</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/list/servicios">Servicios</ion-button>
+      <ion-button routerLink="/list/restaurantes">Restaurantes</ion-button>
+      <ion-button routerLink="/list/hoteles">Hoteles</ion-button>
+      <ion-button routerLink="/list/clinicas">Clínicas</ion-button>
+      <ion-button routerLink="/list/perfil" color="tertiary">Perfil</ion-button>
+      <ion-button routerLink="/list/datos"  color="medium">Datos</ion-button>
+      <ion-button routerLink="/list/cliente" color="success">Cliente</ion-button>
+      <ion-button routerLink="/list/datos-cliente" color="warning">Datos Cliente</ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="ion-padding">
+  <!-- 👇 Outlet debe quedar solo dentro del content -->
+  <ion-router-outlet></ion-router-outlet>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <div class="controls-row" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <ion-input type="number" placeholder="Número 1" [(ngModel)]="n1" style="max-width:120px;"></ion-input>
+      <ion-input type="number" placeholder="Número 2" [(ngModel)]="n2" style="max-width:120px;"></ion-input>
+
+      <ion-button size="small" (click)="calcular()">Calcular</ion-button>
+      <span *ngIf="calcResultado" style="white-space:pre-line;">{{ calcResultado }}</span>
+    </div>
+
+    <app-calculadora
+      [numero1]="n1"
+      [numero2]="n2"
+      [disparador]="calcTrigger"
+      (resultadoCalculado)="onResultadoCalculado($event)">
+    </app-calculadora>
+
+    <!-- ♾️ LO QUE YA TENÍAS -->
+    <div class="controls-row" style="margin-top:8px;">
+      <ion-button size="small" (click)="incrementFromParent()">Incrementar</ion-button>
+      <span *ngIf="milestoneMsg">{{ milestoneMsg }}</span>
+    </div>
+
+    <app-counter
+      [count]="parentCount"
+      (milestone)="onMilestoneReached($event)">
+    </app-counter>
+
+  </ion-toolbar>
+</ion-footer>
